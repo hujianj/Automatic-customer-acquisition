@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">自动点赞</string>
+    <string name="settings">设置</string>
+    <string name="task_history">任务历史</string>
+    <string name="accessibility_service_description">自动点赞服务需要无障碍权限来执行自动操作</string>
+    
+    <!-- 主界面 -->
+    <string name="start_task">开始任务</string>
+    <string name="stop_task">停止任务</string>
+    <string name="task_status">任务状态</string>
+    <string name="running">运行中</string>
+    <string name="stopped">已停止</string>
+    <string name="paused">已暂停</string>
+    
+    <!-- 运行模式 -->
+    <string name="run_mode">运行模式</string>
+    <string name="search_mode">搜索养号</string>
+    <string name="recommend_mode">推荐养号</string>
+    
+    <!-- 搜索设置 -->
+    <string name="search_keywords">搜索词组</string>
+    <string name="title_filter">标题筛选</string>
+    <string name="target_comments">目标评论</string>
+    
+    <!-- 时间间隔设置 -->
+    <string name="time_intervals">时间间隔设置</string>
+    <string name="search_stay_time">搜索停留时间(秒)</string>
+    <string name="video_stay_time">视频/笔记停留时间(秒)</string>
+    <string name="scroll_stay_time">停留下滑时间(秒)</string>
+    <string name="like_stay_time">点赞停留时间(秒)</string>
+    <string name="follow_stay_time">关注停留时间(秒)</string>
+    <string name="follow_count_interval">关注多少个用户后停留</string>
+    
+    <!-- 平台选择 -->
+    <string name="platform_selection">平台选择</string>
+    <string name="douyin">抖音</string>
+    <string name="xiaohongshu">小红书</string>
+    
+    <!-- 设置项 -->
+    <string name="enable_auto_like">启用自动点赞</string>
+    <string name="enable_auto_follow">启用自动关注</string>
+    <string name="enable_auto_comment">启用自动评论</string>
+    <string name="max_likes_per_day">每日最大点赞数</string>
+    <string name="max_follows_per_day">每日最大关注数</string>
+    <string name="max_comments_per_day">每日最大评论数</string>
+    
+    <!-- 通知 -->
+    <string name="notification_channel_name">自动点赞服务</string>
+    <string name="notification_channel_description">显示自动点赞任务的状态</string>
+    <string name="service_running">自动点赞服务正在运行</string>
+    
+    <!-- 错误信息 -->
+    <string name="error_accessibility_not_enabled">请先启用无障碍服务</string>
+    <string name="error_no_platform_selected">请选择至少一个平台</string>
+    <string name="error_invalid_time_interval">时间间隔设置无效</string>
+    
+    <!-- 成功信息 -->
+    <string name="success_task_started">任务已开始</string>
+    <string name="success_task_stopped">任务已停止</string>
+    <string name="success_settings_saved">设置已保存</string>
+</resources> 

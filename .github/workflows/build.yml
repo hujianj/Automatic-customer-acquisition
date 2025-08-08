@@ -1,0 +1,77 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Cache Gradle packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build
+      
+    - name: Build APK
+      run: ./gradlew assembleDebug
+      
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
+        
+    - name: Create Release
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: app/build/outputs/apk/debug/app-debug.apk
+        tag_name: v${{ github.run_number }}
+        name: AutoLike APK v${{ github.run_number }}
+        body: |
+          ## AutoLike Android App
+          
+          ### 功能特性
+          - 自动点赞评论并关注用户
+          - 支持抖音和小红书平台
+          - 搜索养号和推荐养号两种模式
+          - 可配置的时间间隔设置
+          - 任务历史记录和统计
+          
+          ### 安装说明
+          1. 下载APK文件
+          2. 在Android设备上安装
+          3. 启用无障碍服务权限
+          4. 配置任务参数并开始使用
+          
+          ### 注意事项
+          - 请合理使用，避免违反平台规则
+          - 建议设置适当的时间间隔
+          - 定期查看任务历史记录
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
